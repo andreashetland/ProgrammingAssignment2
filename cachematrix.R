@@ -7,8 +7,8 @@
 myMatrix <- rbind(c(4, 2), c(3, 2))
 
 
-# This function converts a matrix object into a 'special' matrix, which consists
-# of a list object containing functions to respectivel get and set the matrix
+# This function converts a matrix object into a 'special matrix', which consists
+# of a list object containing functions to respectively get and set the matrix
 # and its inverse.
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
@@ -29,9 +29,9 @@ makeCacheMatrix <- function(x = matrix()) {
 myCacheMatrix <- makeCacheMatrix(myMatrix)
 
 
-# Evaluate the 'special' cached matrix to inspect the object. We note that
-# myCacheMatrix is not a matrix object like myMatrix. Rather, it is a list of
-# functions, see the description of the makeCacheMatrix() function above.
+# Evaluate the cached matrix to inspect the object. We note that myCacheMatrix
+# is not a matrix object like myMatrix. Rather, it is a list of functions, see
+# the description of the makeCacheMatrix() function above.
 myCacheMatrix
 # $set
 # function (y) 
@@ -57,10 +57,11 @@ myCacheMatrix
 # <environment: 0x000000002fce4bc8>
 
 
-# This function computes the inverse of the 'special' matrix, which we created
+# This function computes the inverse of the cached matrix, which we created
 # by calling the makeCacheMatrix() function above. It first checks to see if
-# the inverse has already been computed and cached. If the inverse has not been 
-# computed, then the function will compute and set the inverse.
+# the inverse has already been computed and cached, in which case the function 
+# returns the cached inverse. If the inverse has not been cached, then the
+# function will compute and cache the inverse.
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     inv <- x$getinverse()
